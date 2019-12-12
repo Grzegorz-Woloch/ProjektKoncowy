@@ -32,6 +32,9 @@ urlpatterns = [
     path('logout/', views.logout_view),
     path('product/<int:id>/delete/', views.DeleteObject.as_view()),
     path('product/<int:id>/modify/', views.ModifyThisProduct.as_view()),
+    path('category/', views.AddCategory.as_view()),
+    path('category/<int:id>/modifycat/', views.ModifyThisCategory.as_view()),
+    path('categories/', views.ShowCategories.as_view()),
 ]
 
 if settings.DEBUG:

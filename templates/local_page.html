@@ -9,8 +9,9 @@
             </a>
         {% endfor %}
     </ul>
-
-    <h4>Łącznie rocznie zarabiam: {{suma}} %</h4>
+    {% if request.user.is_superuser == False %}
+        <h4>Łącznie rocznie zarabiam: {{suma}} %</h4>
+    {% endif %}
 {% endblock %}
 
 

@@ -5,7 +5,7 @@ from django.views import View
 from django.views.generic import CreateView
 
 from inwestycje.models import Category, Product
-from .forms import AddProductForm, LoginForm, ProductModifyForm
+from .forms import AddProductForm, LoginForm, ProductModifyForm, CategoryForm, CategoryModifyForm
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login
@@ -35,6 +35,7 @@ class ShowThisProduct(LoginRequiredMixin, View):
 
 class ModifyThisProduct(PermissionRequiredMixin, View):
     permission_required = 'cms.change_product'
+
     def get(self, request, id):
         product = get_object_or_404(Product, pk=id)
         form = ProductModifyForm(instance=product)
@@ -112,3 +113,45 @@ class DeleteObject(LoginRequiredMixin, View):
         product = Product.objects.get(pk=id)
         product.delete()
         return redirect('/products/')
+
+
+class CategoryForProduct(LoginRequiredMixin, View):
+    def get(self, request, id):
+        category = Category.objects.get(pk=id)
+        return render(request, 'this_product.html', {'category': category})
+
+
+class AddCategory(LoginRequiredMixin, CreateViewWithUser):
+    form_class = CategoryForm
+    template_name = "add_category.html"
+    success_url = "/products"
+
+
+class ModifyThisCategory(LoginRequiredMixin, View):
+    permission_required = 'cms.change_category'
+
+    def get(self, request, id):
+        category = get_object_or_404(Category, pk=id)
+        form = CategoryModifyForm(instance=category)
+        return render(request, 'modify_category.html', context={
+            'form': form,
+            'category': category})
+
+    def post(self, request, id):
+        form = CategoryModifyForm(request.POST, instance=Category.objects.get(pk=id))
+        if form.is_valid():
+            form.save()
+            return redirect('/products')
+        return redirect(f"/products{request.POST.get('category_id')}/?error")
+
+
+# class ShowCategories(LoginRequiredMixin, View):
+#         def get(self, request):
+#             category = Category.objects.all()
+#             return render(request, 'this_category.html', {'category': category})
+
+
+class ShowCategories(LoginRequiredMixin, View):
+    def get(self, request):
+        categories = Category.objects.all()
+        return render(request, 'this_category.html', {'categories': categories, })

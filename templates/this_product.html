@@ -25,11 +25,21 @@
             <li>Dokumenty:</li>
         </h3>
         <a href="{{ product.files.url }}"> {{ product.files.name }}</a>
+        <h3>
+           Kategoria:</h3>
+            {% for category in product.category_set.all %}
+        <li><a href="/category/{{ category.id }}/modifycat/"> {{ category.name }}</a></li>
+            {% endfor %}
     </ul>
 
     <a href="delete">
         <button type="submit">usun produkt</button>
     </a><br>
+    <p>
+            <a href="/category">
+                <button type="submit">Dodaj Kategorie</button>
+            </a>
+        </p>
     {% if request.user.is_superuser %}
 
         <P>
@@ -37,6 +47,7 @@
                 <button type="submit">Zmien dane produktu</button>
             </a>
         </P>
+
     {% endif %}
 
 

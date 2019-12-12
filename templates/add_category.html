@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<H3>Dodaj kategorie do produktu</H3>
+    <form method="post">
+        {{ form.as_p }}
+       <a href="this_product.html"> <button type="submit">Dodaj</button></a>
+{% csrf_token %}
+    </form>
+{% endblock %}
+

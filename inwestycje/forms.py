@@ -2,7 +2,7 @@ from datetime import date
 
 from django import forms
 
-from inwestycje.models import Product
+from inwestycje.models import Product, Category
 
 
 class AddProductForm(forms.ModelForm):
@@ -37,3 +37,21 @@ class ProductModifyForm(forms.ModelForm):
             'end_date': 'end_date',
             'files': 'files',
         }
+
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = '__all__'
+
+class CategoryModifyForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['name']
+        labels = {
+            'name': 'name',
+
+        }
+
+
