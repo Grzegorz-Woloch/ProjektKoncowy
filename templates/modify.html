@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Modyfikuj Product{% endblock title %}
+{% block content %}
+    <form method="post">
+        {{ form.as_p }}
+        {{ product_id }}
+        {{ product.name }}
+        {{ product.name }}
+        {{ product.name }}
+
+        <a href="this_product.html">
+            <button type="submit">Zapisz</button>
+        </a>
+        {% csrf_token %}
+    </form>
+{% endblock %}

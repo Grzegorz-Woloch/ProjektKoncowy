@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <a href="/products"><button type="button"> Home</button></a>
+    <a href="/add_product/"><button type="button"> Dodaj produkt </button></a>
+     <a href="/logout"><button type="button"> Wyloguj </button></a>
+    <a href="/accounts/signup"><button type="button">Sign up</button></a>
+</div>
+<div>
+    <h1><p>PRODUKTY INWESTYCYJNE</p></h1>
+</div>
+{% block content %}
+
+{% endblock %}
+{% csrf_token %}
+</body>
+</html>

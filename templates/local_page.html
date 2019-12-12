@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ul>
+        {% for product in products %}
+            <a href="{% url 'ten_product' product.id %}">
+                <h3>
+                    <li>{{ product.name }} {{ product.profitability }} %r.r   </li>
+                </h3>
+            </a>
+        {% endfor %}
+    </ul>
+
+    <h4>Łącznie rocznie zarabiam: {{suma}} %</h4>
+{% endblock %}
+
+

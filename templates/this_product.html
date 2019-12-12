@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ul>
+        <h3>
+            <li>Nazwa produktu:</li>
+        </h3>
+        {{ product.name }}
+        <h3>
+            <li>Krótki opis:</li>
+        </h3>
+        {{ product.description }}
+        <h3>
+            <li>Stopa zwrotu(roczna):</li>
+        </h3>
+        {{ product.profitability }}%
+        <h3>
+            <li>Początek inwestycji:</li>
+        </h3>
+        {{ product.start_date }}
+        <h3>
+            <li>Koniec inwestycji:</li>
+        </h3>
+        {{ product.end_date }}
+        <h3>
+            <li>Dokumenty:</li>
+        </h3>
+        <a href="{{ product.files.url }}"> {{ product.files.name }}</a>
+    </ul>
+
+    <a href="delete">
+        <button type="submit">usun produkt</button>
+    </a><br>
+    {% if request.user.is_superuser %}
+
+        <P>
+            <a href="modify">
+                <button type="submit">Zmien dane produktu</button>
+            </a>
+        </P>
+    {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+<div>{% block content %}
+    <h3>Dodaj produkt do bazy</h3>
+    <form action="" method="post" enctype='multipart/form-data'>
+        {{ form.as_p }}
+        <a href="">
+           <button type="submit">Zapisz</button>
+        </a>
+        {% csrf_token %}
+    </form>
+
+    {% csrf_token %}
+{% endblock %}
+</div>
+
