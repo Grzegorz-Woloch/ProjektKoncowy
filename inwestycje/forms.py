@@ -28,7 +28,7 @@ class DeleteProduct(forms.ModelForm):
 class ProductModifyForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description', 'profitability', 'start_date', 'end_date', 'files']
+        fields = ['name', 'description', 'profitability', 'start_date', 'end_date', 'files', 'user']
         labels = {
             'name': 'name',
             'description': 'description',
@@ -36,14 +36,15 @@ class ProductModifyForm(forms.ModelForm):
             'start_date': 'start_date',
             'end_date': 'end_date',
             'files': 'files',
+            'user': 'user',
         }
-
 
 
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
         fields = '__all__'
+
 
 class CategoryModifyForm(forms.ModelForm):
     class Meta:
@@ -55,3 +56,7 @@ class CategoryModifyForm(forms.ModelForm):
         }
 
 
+class DeleteCategory(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = '__all__'

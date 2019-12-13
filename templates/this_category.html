@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
     <ul>
-       <h2> Kategorie:</h2>
+        <h2> Kategorie:</h2>
 
-    {% for cat in categories %}
-    <li>{{ cat.name }}</li>
-    {% endfor %}
+        {% for cat in categories %}
+
+                <li>{{ cat.name }}</li>
+
+        {% endfor %}
 
 
     </ul>

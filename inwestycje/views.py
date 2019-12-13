@@ -155,3 +155,13 @@ class ShowCategories(LoginRequiredMixin, View):
     def get(self, request):
         categories = Category.objects.all()
         return render(request, 'this_category.html', {'categories': categories, })
+
+
+class DeleteCategory(LoginRequiredMixin, View):
+
+    def get(self, request, id=None):
+        if id is None:
+            return render(request, 'delete_category.html', context={})
+        category = Category.objects.get(pk=id)
+        category.delete()
+        return redirect('/categories/')

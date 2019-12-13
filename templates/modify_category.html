@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Modyfikuj Product{% endblock title %}
+
 {% block content %}
     <form method="post">
         {{ form.as_p }}
@@ -9,4 +9,9 @@
         </a>
         {% csrf_token %}
     </form>
+    {% if request.user.is_superuser %}
+    <a href="delete">
+            <button type="submit">Usun Kategorie</button>
+        </a><br>
+    {% endif %}
 {% endblock %}

@@ -35,6 +35,7 @@ urlpatterns = [
     path('category/', views.AddCategory.as_view()),
     path('category/<int:id>/modifycat/', views.ModifyThisCategory.as_view()),
     path('categories/', views.ShowCategories.as_view()),
+    path('category/<int:id>/modifycat/delete/', views.DeleteCategory.as_view()),
 ]
 
 if settings.DEBUG:
